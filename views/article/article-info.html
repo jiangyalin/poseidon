@@ -1,0 +1,61 @@
+<%- include('../header.html') %>
+
+<link rel="stylesheet" href="/js/plug-in/quill/css/quill.snow.css"/>
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>文档查看</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/index"><i class="fa fa-dashboard"></i>首页</a>
+            </li>
+            <li>
+                <a href="/article">文档管理</a>
+            </li>
+            <li>
+                <a href="/article-info">文档信息</a>
+            </li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary j-box" style="max-width: 850px;" data-id="<%= data.id %>">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">文档查看</h3>
+                        <div class="box-tools pull-right">
+                            <a href="javascript:void(0)" class="btn btn-box-tool j-btn-previous" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-box-tool j-btn-next" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="mailbox-read-info">
+                            <h3 class="j-title"></h3>
+                            <h5>撰写人: <span>admin</span><span class="mailbox-read-time pull-right j-date"></span></h5>
+                        </div>
+                        <div class="mailbox-read-info">
+                            <h5 class="j-description"></h5>
+                        </div>
+                        <div class="mailbox-read-message">
+                            <div class="j-text-1"></div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default j-btn-previous"><i class="fa fa-chevron-left"></i> 上一篇</button>
+                            <button type="button" class="btn btn-default j-btn-next">下一篇 <i class="fa fa-chevron-right"></i></button>
+                        </div>
+                        <button type="button" class="btn btn-default j-btn-cancel"><i class="fa fa-reply"></i> 返回</button>
+                        <button type="button" class="btn btn-default j-btn-edit"><i class="fa fa-edit"></i> 编辑</button>
+                        <button type="button" class="btn btn-default j-btn-remove"><i class="fa fa-trash-o"></i> 删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="/js/plug-in/quill/js/quill.min.js"></script>
+<script src="/js/article/article-info.js"></script>
+
+<%- include('../footer.html') %>

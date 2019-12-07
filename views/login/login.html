@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
+    <title><%= blog.title %></title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/public/logo/icon-01.png" media="screen" />
+    <link rel="stylesheet" href="/js/plug-in/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/login/login.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+        <!--<div class="he_logo"></div>-->
+    </div>
+    <div class="box">
+        <div class="box_ma">
+            <div class="title">
+                <h1 class="title_h">登录</h1>
+            </div>
+            <div class="box_body">
+                <div class="form_group">
+                    <p class="form_group_p" style="display: none">用户名或密码错误</p>
+                    <div class="group_ma group_ma_to">
+                        <span class="fa fa-user my_font"></span>
+                        <input type="text" class="my_input input_user j-input-name" id="input_user" placeholder="用户名/手机号" />
+                    </div>
+                    <div class="group_ma">
+                        <span class="fa fa-lock my_font"></span>
+                        <input type="password" class="my_input input_user j-input-pwd" placeholder="密码" />
+                    </div>
+                    <div class="group_ma_none" style="display: none;">
+                        <a href="#" class="box_a">忘记密码?</a>
+                    </div>
+                    <div class="group_ma_none" style="height: 15px;">
+                        <!--<a href="#" class="box_a">忘记密码?</a>-->
+                    </div>
+                    <div class="group_ma_none">
+                        <input class="input_submit" type="submit" value="登录" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/plug-in/jquery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/js/login/login.js"></script>
+</body>
+</html>

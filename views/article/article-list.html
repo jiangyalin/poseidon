@@ -1,0 +1,68 @@
+<%- include('../header.html') %>
+
+<link rel="stylesheet" href="/js/plug-in/pagination/css/pagination.css">
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>文档管理</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/index"><i class="fa fa-dashboard"></i>首页</a>
+            </li>
+            <li>
+                <a href="/article">文档管理</a>
+            </li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <a class="" href="/article/article-add">添加</a>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right j-sch-it" placeholder="试试直接搜索吧">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default j-sch">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-bordered table-hover u-table-fixed j-table-1" id="j-table-1">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>描述</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5 box-header">
+                                <p class="j-tips">555</p>
+                            </div>
+                            <div class="col-sm-7">
+                                <section class="page pagination pull-right j-page"></section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="/js/plug-in/pagination/js/pagination.js"></script>
+<script src="/js/plug-in/moment/js/moment.min.js"></script>
+<script src="/js/article/article-list.js"></script>
+
+<%- include('../footer.html') %>
