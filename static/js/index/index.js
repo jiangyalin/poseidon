@@ -21,9 +21,17 @@ const GetList = (id, date) => {
     type: 'get',
     dataType: 'json',
     async: false,
-    success: data => {
+    success: res => {
       let list = ''
-      console.log('data', data)
+      res.data.forEach(item => {
+        const template = '<li class="u-li">' +
+          '<img class="u-img" src="' + item.cover + '">' +
+          '<p class="u-tt">' + item.title + '</p>' +
+          '<button class="u-btn j-caching-btn" type="button" data-id="' + item.id + '" data-date="' + item.date + '" data-disabled="' + item.isStorage + '">缓存</button>' +
+          '</li>'
+        list += template
+      })
+      $('.j-list').html(list)
     }
   })
 }
