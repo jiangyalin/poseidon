@@ -2,7 +2,7 @@ $(function () {
 
   GetList()
 
-  $('.j-caching-btn').click(function () {
+  $('.j-list').on('click', '.j-caching-btn', function () {
     const id = $(this).attr('data-id')
     const date = $(this).attr('data-date')
     AddCachingList(id, date)
@@ -47,11 +47,8 @@ const AddCachingList = (id, date) => {
     type: 'post',
     dataType: 'json',
     async: false,
-    success: data => {
-      console.log('data', data)
-    },
-    error: (jqXHR, textStatus, errorThrown) => {
-      console.log('error ' + textStatus + " " + errorThrown);
+    success: res => {
+      GetList()
     }
   })
 }
