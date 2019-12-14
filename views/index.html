@@ -1,6 +1,55 @@
 <%- include('header.html') %>
 
 <div class="content-wrapper">
-    <h1>这是首页</h1>
+  <!--<h1>这是首页</h1>-->
+  <ul class="m-list">
+    <% data.forEach(function(item){ %>
+    <li class="u-li">
+      <img class="u-img" src="<%= item.cover %>">
+      <p class="u-tt"><%= item.title %></p>
+      <button class="u-btn j-caching-btn" type="button" data-id="<%= item.id %>" data-date="<%= item.date %>" data-disabled="<%= item.isStorage %>">缓<%= item.isStorage %>存</button>
+    </li>
+    <% }) %>
+  </ul>
 </div>
+
+<script src="/js/plug-in/jquery/jquery-3.2.1.min.js"></script>
+<script src="/js/index/index.js"></script>
+
+<style>
+  .m-list {
+    display: flex;
+    padding: 20px 15px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .m-list .u-li {
+    padding: 10px 15px;
+    width: 140px;
+  }
+  .m-list .u-tt {
+    overflow: hidden;
+    display: -webkit-box;
+    line-height: 22px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .m-list .u-img {
+    width: 100%;
+    height: 100px;
+  }
+  .m-list .u-btn {
+    width: 80px;
+    line-height: 28px;
+    color: #3c8dbc;
+    border: 1px solid #3c8dbc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .m-list .u-btn[data-disabled='true'] {
+    background-color: #efefef;
+    pointer-events: none;
+  }
+</style>
 <%- include('footer.html') %>

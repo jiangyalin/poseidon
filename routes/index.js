@@ -1,24 +1,25 @@
-const moment = require('moment');
+const fs = require('fs')
 const bodyParser = require('body-parser');
 
-module.exports = function (app) {
+module.exports = app => {
 
-  app.use(bodyParser.urlencoded({extended: false}));
-  app.use(bodyParser.json()); // 解析参数
+  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json()) // 解析参数
 
-  app.get('/', function (req, res) {
-    return res.redirect('/index');
-  });
+  app.get('/', (req, res) => res.redirect('/index'))
 
   // 首页
-  app.get('/index', function (req, res) {
-    res.render('index');
-  });
+  app.get('/index', (req, res) => {
+    let data = JSON.parse(fs.readFileSync('./data/all.json', 'utf8')).node
+    data = data.map(item => {
+      return {
+        ...item,
+        title: item.title.substring(0, 1) + '这是测试数据这是测试数据这是测试数据这是测试数据这是测试数据',
+        cover: 'http://preapiconsole.71360.com/file/read/www/M00/00/0B/wKgBbF2yUMKAdpDMAAQJhP1oO1Q130.jpg'
+      }
+    })
+    res.render('index', { data: data })
+  })
 
-  // 登陆
-  app.use('/login', require("./login/index"));
-  // 文档管理
-  app.use('/article', require("./article/index"));
-  // 标签管理
-  app.use('/label', require("./label/index"));
-};
+  app.use('/api', require('./api'))
+}
