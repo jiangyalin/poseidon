@@ -3,13 +3,13 @@
 <div class="content-wrapper">
   <!--<h1>这是首页</h1>-->
   <ul class="m-list j-list">
-    <% data.forEach(function(item){ %>
-    <li class="u-li">
-      <img class="u-img" src="<%= item.cover %>">
-      <p class="u-tt"><%= item.title %></p>
-      <button class="u-btn j-caching-btn" type="button" data-id="<%= item.id %>" data-date="<%= item.date %>" data-disabled="<%= item.isStorage %>">缓<%= item.isStorage %>存</button>
-    </li>
-    <% }) %>
+    <!--<% data.forEach(function(item){ %>-->
+    <!--<li class="u-li">-->
+      <!--<img class="u-img" src="<%= item.cover %>">-->
+      <!--<p class="u-tt"><%= item.title %></p>-->
+      <!--<button class="u-btn j-caching-btn" type="button" data-id="<%= item.id %>" data-date="<%= item.date %>" data-disabled="<%= item.isStorage %>">缓<%= item.isStorage %>存</button>-->
+    <!--</li>-->
+    <!--<% }) %>-->
   </ul>
 </div>
 
@@ -39,7 +39,8 @@
     height: 100px;
   }
   .m-list .u-btn {
-    width: 80px;
+    margin: 0 5px;
+    width: 60px;
     line-height: 28px;
     color: #3c8dbc;
     border: 1px solid #3c8dbc;

@@ -8,12 +8,22 @@ $(function () {
     AddCachingList(id, date)
   })
 
+  $('.j-list').on('click', '.j-down-btn', function () {
+    const name = $(this).attr('data-name')
+    const elemIF = document.createElement('iframe')
+    elemIF.src = 'http://localhost:8088/book-zip/' + name + '.zip'
+    console.log('elemIF.src', elemIF.src)
+    console.log('name', name)
+    elemIF.style.display = 'none'
+    document.body.appendChild(elemIF)
+  })
+
 })
 
 // 获取列表
 const GetList = (id, date) => {
   $.ajax({
-    url: '/api/list',
+    url: 'http://localhost:8088/api/list',
     data: {
       id,
       date
@@ -27,7 +37,8 @@ const GetList = (id, date) => {
         const template = '<li class="u-li">' +
           '<img class="u-img" src="' + item.cover + '">' +
           '<p class="u-tt">' + item.title + '</p>' +
-          '<button class="u-btn j-caching-btn" type="button" data-id="' + item.id + '" data-date="' + item.date + '" data-disabled="' + item.isStorage + '">缓存</button>' +
+          '<button class="u-btn j-caching-btn" type="button" data-id="' + item.id + '" data-date="' + item.date + '" data-disabled="' + item.isStorage + '">' + (item.isStorage ? '确认完成' : '确认') + '</button>' +
+          '<button class="u-btn j-down-btn" type="button" data-name="' + item.localName + '">获取</button>' +
           '</li>'
         list += template
       })
@@ -39,7 +50,7 @@ const GetList = (id, date) => {
 // 加入缓存队列
 const AddCachingList = (id, date) => {
   $.ajax({
-    url: '/api/caching',
+    url: 'http://localhost:8088/api/caching',
     data: {
       id,
       date
