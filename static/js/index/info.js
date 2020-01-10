@@ -23,7 +23,7 @@ $(function () {
 // 获取列表
 const GetList = (id, date) => {
   $.ajax({
-    url: 'http://localhost:8087/api/list',
+    url: 'http://localhost:8087/api/info',
     data: {
       id,
       date
@@ -34,9 +34,10 @@ const GetList = (id, date) => {
     success: res => {
       let list = ''
       res.data.forEach(item => {
+        item = item[0]
         const template = '<li class="u-li">' +
           '<img class="u-img" src="' + item.cover + '">' +
-          '<p class="u-tt">' + item.title + '</p>' +
+          '<p class="u-tt">' + item.name + '</p>' +
           '<button class="u-btn j-caching-btn" type="button" data-id="' + item.id + '" data-date="' + item.date + '" data-disabled="' + item.isStorage + '">' + (item.isStorage ? '确认完成' : '确认') + '</button>' +
           '<button class="u-btn j-down-btn" type="button" data-name="' + item.localName + '">获取</button>' +
           '</li>'

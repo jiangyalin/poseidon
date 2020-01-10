@@ -6,8 +6,6 @@ const config = {
   path: path.normalize(__dirname + '/static/book/')
 }
 
-const list = []
-
 const readFileList = (dir, filesList = []) => {
   const files = fs.readdirSync(dir)
   files.forEach(item => {
@@ -26,8 +24,8 @@ const readFileList = (dir, filesList = []) => {
   return filesList
 }
 
-const getBuffer = async () => {
-  let _node = []
+const getBuffer = async callback => {
+  const list = []
   const fileList = await readFileList(config.path)
   for (let i = 0; i < fileList.length; i++) {
     const suffixName = fileList[i].name.substring(fileList[i].name.lastIndexOf('.') + 1)
@@ -39,18 +37,25 @@ const getBuffer = async () => {
     }
   }
 
-  const load = await JSZip.loadAsync(fs.readFileSync(list[0].path))
+  const node = []
+  for (let i = 0; i < list.length; i++) {
+    const load = await JSZip.loadAsync(fs.readFileSync(list[i].path))
 
-  for (let key in load.files) {
-    const res = await load.file(key).async('nodebuffer')
-    _node.push({
-      key,
-      buffer: res
-    })
+    let _node = []
+    for (let key in load.files) {
+      const res = await load.file(key).async('nodebuffer')
+      _node.push({
+        key,
+        buffer: res
+      })
+    }
+    _node = _node.map(item => item).sort((a, b) => a.key - b.key)
+    node.push(_node)
   }
-  _node = _node.map(item => item).sort((a, b) => a.key - b.key)
-  console.log('_node', _node)
+  callback(node)
 }
 
+module.exports = getBuffer
+
 // console.log('list', list)
-console.log('_node', getBuffer())
+// console.log('_node', getBuffer())
