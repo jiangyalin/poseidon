@@ -24,32 +24,38 @@ const readFileList = (dir, filesList = []) => {
   return filesList
 }
 
-const getBuffer = async callback => {
+const getBuffer = async (callback = () => {}) => {
   const list = []
   const fileList = await readFileList(config.path)
   for (let i = 0; i < fileList.length; i++) {
     const suffixName = fileList[i].name.substring(fileList[i].name.lastIndexOf('.') + 1)
+    const name = fileList[i].name.substring(0, fileList[i].name.lastIndexOf('.'))
     if (suffixName === 'zip') {
       list.push({
-        name: fileList[i].name,
+        fileName: fileList[i].name,
+        name,
         path: fileList[i].fullPath
       })
     }
   }
 
-  const node = []
+  let node = []
   for (let i = 0; i < list.length; i++) {
     const load = await JSZip.loadAsync(fs.readFileSync(list[i].path))
 
-    let _node = []
+    let index = 0
+    let _node = {}
     for (let key in load.files) {
-      const res = await load.file(key).async('nodebuffer')
-      _node.push({
-        key,
-        buffer: res
-      })
+      if (index === 0) {
+        index++
+        const res = await load.file(key).async('nodebuffer')
+        _node = {
+          key,
+          buffer: res,
+          name: list[i].name
+        }
+      }
     }
-    _node = _node.map(item => item).sort((a, b) => a.key - b.key)
     node.push(_node)
   }
   callback(node)

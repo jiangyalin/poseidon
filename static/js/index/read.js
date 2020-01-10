@@ -22,7 +22,6 @@ const GetList = (id, date) => {
     success: res => {
       let list = ''
       res.data.forEach(item => {
-        item = item[0]
         const template = '<li class="u-li">' +
           '<img class="u-img j-img" src="' + item.cover + '">' +
           '<p class="u-tt">' + item.name + '</p>' +
